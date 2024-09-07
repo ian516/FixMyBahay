@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const path = require('path'); // Ensure you use path to resolve file paths
+const path = require('path'); 
 const { MongoClient } = require('mongodb');
 const bcrypt = require('bcrypt');
 
@@ -62,6 +62,12 @@ app.post('/login', async (req, res) => {
     }
 
     res.json({ message: 'Login successful', role: user.role });
+});
+
+// Error handling middleware (optional, but useful for debugging)
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
 });
 
 // Start the server
