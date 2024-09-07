@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FixMyBahay - Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="header"></div>  <!-- Placeholder for the header -->
+
+    <h1>Welcome to FixMyBahay</h1>
+    <p>Your one-stop solution for house construction services.</p>
+
+    <div id="featured-contractors"></div>  <!-- Placeholder for featured contractors -->
+
+    <div id="footer"></div>  <!-- Placeholder for the footer -->
+
+    <script>
+        // Load header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+
+        // Load featured contractors
+        fetch('featured_contractors.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('featured-contractors').innerHTML = data);
+
+        // Load footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+</body>
+</html>
