@@ -1,8 +1,8 @@
 require('dotenv').config();
 const express = require('express');
-const path = require('path'); // This is needed to handle file paths
+const path = require('path'); // Ensure you use path to resolve file paths
 const { MongoClient } = require('mongodb');
-const bcrypt = require('bcrypt');  // For password hashing
+const bcrypt = require('bcrypt');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -28,15 +28,15 @@ app.use(express.json());
 // Serve static files from the "public" folder
 app.use(express.static('public'));
 
-// Serve the homepage (index.html) for the root route
+// Serve index.html for the root route
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Sign-up Route
+// Sign-up route
 app.post('/signup', async (req, res) => {
     const { username, password, role } = req.body;
-
+    
     if (!username || !password || !role) {
         return res.status(400).json({ message: 'Please provide username, password, and role' });
     }
@@ -52,7 +52,7 @@ app.post('/signup', async (req, res) => {
     }
 });
 
-// Login Route
+// Login route
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
     const user = await client.db('FixMyBahay').collection('users').findOne({ username });
